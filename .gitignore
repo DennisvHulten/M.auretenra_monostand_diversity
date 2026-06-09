@@ -1,0 +1,15 @@
+# Point clouds
+*.ply
+
+# Raw sequencing data
+*.fastq.gz
+*.fq.gz
+
+# Alignment files
+*.bam
+*.bai
+
+# Large archives
+*.zip
+*.tar.gz
+*.7z
