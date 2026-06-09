@@ -13,3 +13,10 @@
 *.zip
 *.tar.gz
 *.7z
+
+# Mac
+.DS_Store
+
+# Large genotype files
+*.vcf
+*.vcf.gz
