@@ -1,4 +1,7 @@
-﻿Notebook for the genomic analysis of Madracis auretenra (DArTseq) to accompany (van Hulten, in prep.)
+# M.auretenra_monostand_diversity
+Repository for data and scripts associated to the publication (van Hulten, in prep.) regarding the monitoring of genotypic diversity in dense monospecific stands of Mardacis auretenra on Curacao by utilizing Structure from Motion photogrammetry. 
+
+Notebook for the genomic analysis of Madracis auretenra (DArTseq) to accompany (van Hulten, in prep.)
 Data was collected during two expeditions to Curacao, following a first in 2021 when 493 samples were sequenced, and second in 2023 when 184 samples were collected and sequenced. The total dataset contains 681 individuals. All samples were shipped to Diversity Arrays Technology in Canberra, Australia for sequencing (DArT seq). Backups of the original samples are held at the California Academy of Sciences, San Francisco, USA. 
 
 
