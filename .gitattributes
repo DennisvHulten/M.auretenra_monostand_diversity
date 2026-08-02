@@ -1,0 +1,2 @@
+Data/Photogrammetry/*.ply filter=lfs diff=lfs merge=lfs -text
+Data/Popstats/*.vcf filter=lfs diff=lfs merge=lfs -text
