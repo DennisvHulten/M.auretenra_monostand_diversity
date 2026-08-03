@@ -1,6 +1,6 @@
 # *Madracis auretenra* RADseq/DArTseq Population Genomics Analysis
 
-Analysis notebook documenting the genomic workflow used to accompany **van Hulten (in prep.)** — a population genomics study of the scleractinian coral *Madracis auretenra* using DArTseq (RAD-tag sequencing).
+Analysis notebook documenting the genomic workflow used to accompany **van Hulten (in prep.)** — a population genomics study of the scleractinian coral *Madracis auretenra* using DArTseq (reduced representation SNP data).
 
 This README walks through every stage of the analysis, from raw read processing through to reefscape-level genetic diversity assessment, along with the exact commands, scripts, and parameter files used at each step.
 
