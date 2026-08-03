@@ -1,6 +1,3 @@
-# Point clouds
-*.ply
-
 # Raw sequencing data
 *.fastq.gz
 *.fq.gz
@@ -17,6 +14,3 @@
 # Mac
 .DS_Store
 
-# Large genotype files
-*.vcf
-*.vcf.gz
