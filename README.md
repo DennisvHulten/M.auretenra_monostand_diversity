@@ -121,20 +121,6 @@ $ multiqc fastqc/
 $ zip multiqc*
 ```
 
-![](Images/image22.png)
-
-![](Images/image5.png)
-
-![](Images/image57.png)
-
-Most of my sequences looks like this, they are supposed to run parallel... most sequences look similar in the position of the peaks but differ on peak intensity, this could be biologically relevant but could also be contamination?
-
-![](Images/image53.png)
-
-![](Images/image39.png)
-
-And warnings for sequence length dist....
-
 ![](Images/image47.png)
 
 ![](Images/image9.png)
@@ -399,8 +385,6 @@ blastn_outputs/MADR_reference_all.txt -num_threads 32
 
 **Repeat for denovo**
 
-Looking at the results
-
 ```bash
 grep "Query" blastn_outputs/MADR_reference_all.txt | wc -l
 #53725 Loci
@@ -454,7 +438,7 @@ MADR_reference_all_loci_to_remove_temp.txt
 ```bash
 $ wc -l MADR_reference_all_loci_to_remove_temp.txt
 #729 loci to remove
-# for reference selection we need the name of the chrom
+# for reference selection chrom name needed
 awk '{split($2, acc, "[|.]"); print "ENA|" acc[4] "|"
 acc[4] ".1";}' MADR_reference_all_loci_to_remove_temp.txt >
 ```
@@ -471,8 +455,6 @@ MADR_reference_c3_temp.vcf MADR_reference_all_loci_to_remove.txt > MADR_referenc
 ## D1. Initial Genetic Assessment
 
 ### D1a. Removing Underperforming Individuals & SNPs
-
-Start with qc control of snps and the vcf
 
 ```bash
 vcf_pos_count_MODref.py reference/MADR_reference_c3.vcf >
@@ -636,13 +618,14 @@ if (dh[1] == dx[1]) print $0;
 117749 60737
 ```
 
-Based on these results we can put a threshold around 98% similarity for our initial clone detection
+Based on these results, put a threshold around 98% similarity for initial clone detection
 
 ```bash
 python3 /home/pbongaerts/Github/radseq/detect_clones_vcf.py -v
 ```
 
-MADR_reference_d1.vcf -p MADR_reference_popfile_d1.txt -t 98 > MADR_reference_d1_cloneout_98.txt Use the output to select clonal lineages (between ###4 and ###5)
+MADR_reference_d1.vcf -p MADR_reference_popfile_d1.txt -t 98 > MADR_reference_d1_cloneout_98.txt 
+Use the output to select clonal lineages (between ###4 and ###5)
 
 ```bash
 sed -n '/###4/,/###5/p' MADR_reference_d1_cloneout_98.txt >
@@ -650,7 +633,7 @@ MADR_reference_d1_clonal_groups.txt
 $ python3 ~/scripts/add_clonal_group_to_popfile.py
 ```
 
-MADR_reference_popfile_d1.txt MADR_reference_d1_clonal_groups.txt MADR_reference_d1_popfile_temp.txt Visualise clonal groups in the tree using R
+Visualise clonal groups in the tree using R
 
 ![](Images/image67.png)
 
@@ -768,15 +751,6 @@ K = 4: MedMeaK 1.0 MaxMeaK 1 MedMedK 1.0 MaxMedK 1
 
 MADR_reference_d1_strict_no_clones.vcf Running snapclust and structure on d1_no_clones snapclust.R
 
-```bash
-#warning
-> MADR_snap_k2 <- snapclust(MADR_genind, 2)
-Large dataset syndrome:
-for 308 individuals, differences in log-likelihoods exceed computer
-```
-
-precision; group membership probabilities are approximated (only trust clear-cut values)
-
 ![](Images/image61.png)
 
 ![](Images/image24.png)
@@ -785,14 +759,14 @@ precision; group membership probabilities are approximated (only trust clear-cut
 
 ![](Images/image27.png)
 
-Check to see if we get the same assignment of individuals from the denovo and dart vcfs.
+Comparison to denovo and Dart VCFs.
 
 ```bash
 # use pop assignment script to assign populations based on structure output
 python3 ~/scripts/MADR_compare_strucout.py MADR_reference_d1_strict_no_clones_1739223814/*.out.csv
 ```
 
-Compared assignments with lineages based on the NJ tree using iTOL, for both the reference and denovo assemblies: found no inconsistencies in samples belonging to the minor or major lineage.
+Compared assignments with lineages based on the NJ tree using iTOL, for both the reference and de novo assemblies: found no inconsistencies in samples belonging to the minor or major lineage.
 
 ```bash
 %awk -F ': ' '{gsub(/\(.*\)/, "", $2); gsub(/ /, "", $2); print $2}' \
@@ -925,7 +899,7 @@ filtered data
 
 ![](Images/image18.png)
 
-Most appropriate threshold for Major lineages seems to be the Average threshold dictated by poppr pictured in Blue in the graph above. Important notice: the purple line indicates the genetic similarity of the replicate pair with the highest
+Most appropriate threshold for Major lineages seems to be the Average threshold dictated by poppr pictured in Blue in the graph above. 
 
 ![](Images/image30.png)
 
